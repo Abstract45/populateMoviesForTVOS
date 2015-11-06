@@ -34,24 +34,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="535"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="testData" translatesAutoresizingMaskIntoConstraints="NO" id="DBZ-Ht-kBG">
-                                                    <rect key="frame" x="22" y="15" width="293" height="475"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testData" translatesAutoresizingMaskIntoConstraints="NO" id="DBZ-Ht-kBG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="525"/>
                                                     <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="475" id="PdC-Tv-tWP"/>
-                                                        <constraint firstAttribute="width" constant="293" id="QGP-c0-cMn"/>
-                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="The Grey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDV-t5-loL">
-                                                    <rect key="frame" x="22" y="497" width="291" height="36"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDV-t5-loL">
+                                                    <rect key="frame" x="-1" y="484" width="337" height="36"/>
                                                     <animations/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="291" id="MsQ-f9-C45"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="dXM-HJ-xx3"/>
-                                                        <constraint firstAttribute="height" constant="36" id="vSj-qI-yTe"/>
+                                                        <constraint firstAttribute="width" constant="337" id="iwj-B5-NuO"/>
+                                                        <constraint firstAttribute="height" constant="36" id="sNE-lR-ZSB"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -60,10 +56,12 @@
                                         </view>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstItem="DBZ-Ht-kBG" firstAttribute="top" secondItem="iME-Eo-WlC" secondAttribute="topMargin" constant="7" id="8P5-bu-RrA"/>
-                                            <constraint firstItem="RDV-t5-loL" firstAttribute="top" secondItem="DBZ-Ht-kBG" secondAttribute="bottom" constant="21" id="ZLM-hG-4fT"/>
-                                            <constraint firstItem="DBZ-Ht-kBG" firstAttribute="centerX" secondItem="iME-Eo-WlC" secondAttribute="centerX" id="lge-jp-9R4"/>
-                                            <constraint firstItem="RDV-t5-loL" firstAttribute="centerX" secondItem="iME-Eo-WlC" secondAttribute="centerX" id="rle-8V-0kD"/>
+                                            <constraint firstItem="DBZ-Ht-kBG" firstAttribute="top" secondItem="iME-Eo-WlC" secondAttribute="top" id="Ktm-vq-nJf"/>
+                                            <constraint firstItem="DBZ-Ht-kBG" firstAttribute="leading" secondItem="iME-Eo-WlC" secondAttribute="leading" id="MsA-rh-kUX"/>
+                                            <constraint firstAttribute="bottom" secondItem="DBZ-Ht-kBG" secondAttribute="bottom" constant="10" id="Mt1-0g-7D3"/>
+                                            <constraint firstItem="RDV-t5-loL" firstAttribute="centerX" secondItem="DBZ-Ht-kBG" secondAttribute="centerX" id="e8b-PU-S4s"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="RDV-t5-loL" secondAttribute="bottom" constant="7" id="jlz-6Q-drY"/>
+                                            <constraint firstAttribute="trailing" secondItem="DBZ-Ht-kBG" secondAttribute="trailing" id="zls-yS-mNw"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="movieImage" destination="DBZ-Ht-kBG" id="bG5-Y3-DlN"/>

@@ -13,8 +13,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView:UICollectionView!
     //293,475
     
-    let defaultSize = CGSize(width: 293, height: 475)
-    let selectSize = CGSize(width: 323, height: 525)
+    let defaultSize = CGSize(width: 337, height: 535)
+    let selectSize = CGSize(width: 340, height: 555)
+    
+    let defltLabelSize = CGSize(width: 337, height: 36)
+    let slctLabelSize = CGSize(width: 340, height: 56)
     
     var movies = [Movie]()
     
@@ -103,10 +106,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let prev = context.previouslyFocusedView as? MovieCell {
             UIView.animateWithDuration(0.1, animations: { () -> Void in
                 prev.movieImage.frame.size = self.defaultSize
+                prev.movieLabel.frame.size = self.defltLabelSize
             })
             if let next = context.nextFocusedView as? MovieCell {
                 UIView.animateWithDuration(0.1, animations: { () -> Void in
                     next.movieImage.frame.size = self.selectSize
+                    next.movieLabel.frame.size = self.slctLabelSize
                 })
             }
         }
