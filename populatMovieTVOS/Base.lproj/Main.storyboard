@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15C27e" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15C31f" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -41,7 +41,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDV-t5-loL">
                                                     <rect key="frame" x="-1" y="484" width="337" height="36"/>
                                                     <animations/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="337" id="iwj-B5-NuO"/>
                                                         <constraint firstAttribute="height" constant="36" id="sNE-lR-ZSB"/>
@@ -66,6 +66,7 @@
                                         <connections>
                                             <outlet property="movieImage" destination="DBZ-Ht-kBG" id="bG5-Y3-DlN"/>
                                             <outlet property="movieLabel" destination="RDV-t5-loL" id="fLG-sj-FtO"/>
+                                            <segue destination="1Ad-al-xWb" kind="presentation" identifier="detailVC" id="d5u-Sa-iw9"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -88,7 +89,99 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="347" y="164"/>
+            <point key="canvasLocation" x="136" y="143"/>
+        </scene>
+        <!--DetailVC-->
+        <scene sceneID="3m9-Z9-fB1">
+            <objects>
+                <viewController id="1Ad-al-xWb" customClass="DetailVC" customModule="populatMovieTVOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5mx-ct-eY4"/>
+                        <viewControllerLayoutGuide type="bottom" id="YMA-dD-J5V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="moB-hB-RB3">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testData" translatesAutoresizingMaskIntoConstraints="NO" id="iBo-Pg-cQq">
+                                <rect key="frame" x="27" y="126" width="408" height="634"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="634" id="ThX-eB-nuZ"/>
+                                    <constraint firstAttribute="width" constant="408" id="Ve1-CY-bAV"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sVZ-Ch-V7I">
+                                <rect key="frame" x="451" y="126" width="400" height="390"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Grey" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEn-yl-cWP">
+                                        <rect key="frame" x="0.0" y="0.0" width="122" height="37"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqY-UK-7jc">
+                                        <rect key="frame" x="0.0" y="47" width="41" height="22"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action, Adventure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gke-UO-3WJ">
+                                        <rect key="frame" x="0.0" y="79" width="144" height="22"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMDB rating: 7.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kg6-JT-cSk">
+                                        <rect key="frame" x="0.0" y="111" width="132" height="23"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inn-3t-TlM">
+                                        <rect key="frame" x="0.0" y="144" width="400" height="246"/>
+                                        <animations/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="400" id="s4V-Kd-I1t"/>
+                                        </constraints>
+                                        <string key="text">Overview: Following a grueling five-week shift at an Alaskan oil refinery, workers led by sharpshooter John Ottway (Liam Neeson) are flying home for a much-needed vacation. A brutal storm causes their plane to crash in the frozen wilderness, and only eight men (Frank Grillo, Dermot Mulroney), including Ottway, survive. As they trek southward toward civilization and safety, Ottway and his companions must battle mortal injuries, the icy elements, and a pack of hungry wolves.</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="a49-Q9-9PV"/>
+                                    <constraint firstAttribute="height" constant="390" id="dm2-iT-SZ7"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <animations/>
+                        <constraints>
+                            <constraint firstItem="sVZ-Ch-V7I" firstAttribute="leading" secondItem="iBo-Pg-cQq" secondAttribute="trailing" constant="16" id="2Jb-bd-El3"/>
+                            <constraint firstItem="iBo-Pg-cQq" firstAttribute="top" secondItem="5mx-ct-eY4" secondAttribute="bottom" constant="126" id="2yt-qh-yR1"/>
+                            <constraint firstItem="sVZ-Ch-V7I" firstAttribute="top" secondItem="5mx-ct-eY4" secondAttribute="bottom" constant="126" id="PCY-gl-R6q"/>
+                            <constraint firstItem="iBo-Pg-cQq" firstAttribute="leading" secondItem="moB-hB-RB3" secondAttribute="leadingMargin" constant="7" id="hpa-Sk-Tb0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="movieCategory" destination="gke-UO-3WJ" id="Rdz-I7-XMr"/>
+                        <outlet property="movieDate" destination="eqY-UK-7jc" id="MOt-YV-oHu"/>
+                        <outlet property="movieImage" destination="iBo-Pg-cQq" id="UFz-N0-gwa"/>
+                        <outlet property="movieOverview" destination="Inn-3t-TlM" id="DCr-xS-N3R"/>
+                        <outlet property="movieRating" destination="Kg6-JT-cSk" id="SnM-mf-JbS"/>
+                        <outlet property="movieTitle" destination="eEn-yl-cWP" id="IFO-LQ-6eY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AnE-mo-97I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1546" y="164"/>
         </scene>
     </scenes>
     <resources>

@@ -19,7 +19,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let defltLabelSize = CGSize(width: 337, height: 36)
     let slctLabelSize = CGSize(width: 340, height: 56)
     
+    
     var movies = [Movie]()
+    var indexValue: NSIndexPath?
     
     let urlBase = "http://api.themoviedb.org/3/movie/popular?api_key=ff743742b3b6c89feb59dfc138b4c12f"
     
@@ -45,7 +47,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     
                     
                     if let results = dict!["results"] as? [Dictionary<String,AnyObject>] {
-                        print(results)
+                        
                         for obj in results {
                             let movie = Movie(movieDict: obj)
                             self.movies.append(movie)
@@ -71,7 +73,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell.configCell(movie)
             
             if cell.gestureRecognizers?.count == nil {
+                
                 let tap = UITapGestureRecognizer(target: self, action: "tapped:")
+                
                 tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
                 cell.addGestureRecognizer(tap)
             }
@@ -83,12 +87,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
-    func tapped(gesture:UIGestureRecognizer){
-        if let cell = gesture.view as? MovieCell {
-            //load the next view controller and pass in the movie
-            print("tap detected")
+    func tapped(gesture:AnyObject?){
+        if let cell = gesture!.view as? MovieCell {
+            
+        indexValue = collectionView.indexPathForItemAtPoint(cell.frame.origin)
+            
+            performSegueWithIdentifier("detailVC", sender: gesture)
         }
     }
+    
+
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }
@@ -117,6 +126,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
     }
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detailVC" {
+           
+            
+            if let destinationVC = segue.destinationViewController as? DetailVC {
+                destinationVC.movieDetail = movies[(indexValue?.row)!]
+                }
+            }
+        
+    }
 }
 
