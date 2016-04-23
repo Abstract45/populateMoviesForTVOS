@@ -19,17 +19,55 @@ class DetailVC: UIViewController{
     
     var movieDetail: Movie?
     
-   
-  
+    var movieTrailer:String?
+    
+    func getMovieTrailer() {
+        guard let movieId = movieDetail?.movieId else {
+            return
+        }
+       
+        guard let url = NSURL(string: "http://api.themoviedb.org/3/movie/\(movieId)/videos?api_key=ff743742b3b6c89feb59dfc138b4c12f") else {
+            return
+        }
+        let request = NSMutableURLRequest(URL: url)
+        
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if error != nil {
+                print("error could not find that movie")
+            } else  {
+                do {
+                    let dict = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments) as? Dictionary<String, AnyObject>
+                    
+                    
+                    if let results = dict!["results"] as? [Dictionary<String,AnyObject>] {
+                        
+                        for obj in results {
+                           self.movieTrailer = obj["key"] as? String
+                            print(self.movieTrailer)
+                        }
+                        
+                    }
+                } catch {
+                    
+                }
+//         movieTrailer = data["key"] as? String
+//                print(String(data: data!, encoding: NSUTF8StringEncoding))
+            
+            }
+        }
+        task.resume()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        getMovieTrailer()
         
         movieTitle.text = movieDetail?.title!
         movieOverview.text = movieDetail?.overview!
-        movieRating.text = movieDetail?.rating!
+        movieRating.text = "IMDB Rating: " + (movieDetail?.rating!)!
         movieDate.text = movieDetail?.releaseDate!
         
         guard let posterPath = movieDetail?.posterPath else {
@@ -51,14 +89,20 @@ class DetailVC: UIViewController{
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-         Get the new view controller using segue.destinationViewController.
-         Pass the selected object to the new view controller.
+        
+        if let destinationViewController = segue.destinationViewController as? SampleVideoPlayer {
+            destinationViewController.movieTrailer = self.movieTrailer
+        }
+        
+        
+        
+        
     }
-    */
+
 
 }

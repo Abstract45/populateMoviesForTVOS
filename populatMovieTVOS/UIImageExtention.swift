@@ -18,7 +18,6 @@ extension UIImageView {
                     return
                 }
                 self.image = UIImage(data: imageData)
-                
             }
         }
     }

@@ -9,7 +9,6 @@
 import Foundation
 
 class Movie {
-    
     let urlBase = "http://image.tmdb.org/t/p/w500"
     
     var title: String!
@@ -17,6 +16,7 @@ class Movie {
     var posterPath:String!
     var rating:String!
     var releaseDate:String!
+    var movieId:Float!
     
     init(movieDict: Dictionary<String, AnyObject>){
         if let title = movieDict["original_title"] as? String {
@@ -34,6 +34,9 @@ class Movie {
         }
         if let releaseDate = movieDict["release_date"] as? String {
             self.releaseDate = releaseDate
+        }
+        if let movieId = movieDict["id"] as? Float {
+            self.movieId = movieId
         }
         
         

@@ -15,8 +15,25 @@
 		E85D8E871BEBD9B10011866E /* testData.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E85D8E861BEBD9B10011866E /* testData.jpg */; };
 		E85D8E8B1BEBDBB20011866E /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D8E8A1BEBDBB20011866E /* MovieCell.swift */; };
 		E85D8E8D1BEBE3C30011866E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D8E8C1BEBE3C30011866E /* Movie.swift */; };
+		E8BFE3151BF1AB7D00B2B192 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BFE3131BF1AB7900B2B192 /* AVKit.framework */; };
+		E8BFE3161BF1AB7D00B2B192 /* AVKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8BFE3131BF1AB7900B2B192 /* AVKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E8BFE3191BF1AED300B2B192 /* SampleVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BFE3181BF1AED300B2B192 /* SampleVideoPlayer.swift */; };
 		E8F3617A1BEF1A6100971541 /* UIImageExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F361791BEF1A6100971541 /* UIImageExtention.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E8BFE3171BF1AB7D00B2B192 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E8BFE3161BF1AB7D00B2B192 /* AVKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E821F4701BEC5FFC006B19CB /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
@@ -29,6 +46,8 @@
 		E85D8E861BEBD9B10011866E /* testData.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testData.jpg; sourceTree = "<group>"; };
 		E85D8E8A1BEBDBB20011866E /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		E85D8E8C1BEBE3C30011866E /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		E8BFE3131BF1AB7900B2B192 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		E8BFE3181BF1AED300B2B192 /* SampleVideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleVideoPlayer.swift; sourceTree = "<group>"; };
 		E8F361791BEF1A6100971541 /* UIImageExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtention.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8BFE3151BF1AB7D00B2B192 /* AVKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +68,7 @@
 			children = (
 				E85D8E761BEA8C2D0011866E /* populatMovieTVOS */,
 				E85D8E751BEA8C2D0011866E /* Products */,
+				E8BFE3131BF1AB7900B2B192 /* AVKit.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +85,7 @@
 			children = (
 				E85D8E771BEA8C2D0011866E /* AppDelegate.swift */,
 				E85D8E791BEA8C2D0011866E /* ViewController.swift */,
+				E8BFE3181BF1AED300B2B192 /* SampleVideoPlayer.swift */,
 				E85D8E7B1BEA8C2D0011866E /* Main.storyboard */,
 				E85D8E7E1BEA8C2D0011866E /* Assets.xcassets */,
 				E85D8E861BEBD9B10011866E /* testData.jpg */,
@@ -86,6 +108,7 @@
 				E85D8E701BEA8C2D0011866E /* Sources */,
 				E85D8E711BEA8C2D0011866E /* Frameworks */,
 				E85D8E721BEA8C2D0011866E /* Resources */,
+				E8BFE3171BF1AB7D00B2B192 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8BFE3191BF1AED300B2B192 /* SampleVideoPlayer.swift in Sources */,
 				E821F4711BEC5FFC006B19CB /* DetailVC.swift in Sources */,
 				E85D8E7A1BEA8C2D0011866E /* ViewController.swift in Sources */,
 				E8F3617A1BEF1A6100971541 /* UIImageExtention.swift in Sources */,

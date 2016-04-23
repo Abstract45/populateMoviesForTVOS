@@ -9,19 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
-    @IBOutlet weak var collectionView:UICollectionView!
-    //293,475
     
+    @IBOutlet weak var collectionView:UICollectionView!
     let defaultSize = CGSize(width: 337, height: 535)
     let selectSize = CGSize(width: 340, height: 555)
-    
     let defltLabelSize = CGSize(width: 337, height: 36)
     let slctLabelSize = CGSize(width: 340, height: 56)
     
     
     var movies = [Movie]()
-    var indexValue: NSIndexPath?
+    var indexValue = NSIndexPath()
     
     let urlBase = "http://api.themoviedb.org/3/movie/popular?api_key=ff743742b3b6c89feb59dfc138b4c12f"
     
@@ -33,7 +30,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         downloadData()
     }
-
+    
     func downloadData() {
         let url = NSURL(string: urlBase)!
         let request = NSURLRequest(URL: url)
@@ -43,29 +40,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 print(error)
             } else {
                 do {
-                let dict = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments) as? Dictionary<String, AnyObject>
-                    
+                    let dict = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments) as? Dictionary<String, AnyObject>
                     
                     if let results = dict!["results"] as? [Dictionary<String,AnyObject>] {
-                        
                         for obj in results {
                             let movie = Movie(movieDict: obj)
                             self.movies.append(movie)
                         }
                         dispatch_async(dispatch_get_main_queue()){
-                        self.collectionView.reloadData()
+                            self.collectionView.reloadData()
                         }
                     }
-                } catch {
-                    
+                } catch let err as NSError{
+                    print(err.debugDescription)
                 }
             }
-            
         }
         task.resume()
     }
-  
-
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("movieCell", forIndexPath: indexPath) as? MovieCell {
@@ -74,7 +67,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             if cell.gestureRecognizers?.count == nil {
                 
-                let tap = UITapGestureRecognizer(target: self, action: "tapped:")
+                let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapped(_:)))
                 
                 tap.allowedPressTypes = [NSNumber(integer: UIPressType.Select.rawValue)]
                 cell.addGestureRecognizer(tap)
@@ -82,21 +75,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             return cell
         } else {
-          return MovieCell()  
+            return MovieCell()
         }
     }
-    
-    
     func tapped(gesture:AnyObject?){
-        if let cell = gesture!.view as? MovieCell {
+        if let cell = gesture?.view as? MovieCell {
             
-        indexValue = collectionView.indexPathForItemAtPoint(cell.frame.origin)
+            indexValue = collectionView.indexPathForItemAtPoint(cell.frame.origin)!
             
             performSegueWithIdentifier("detailVC", sender: gesture)
         }
     }
-    
-
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
@@ -106,35 +95,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(337, 535)
-        
-    }
-    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-        
-        if let prev = context.previouslyFocusedView as? MovieCell {
-            UIView.animateWithDuration(0.1, animations: { () -> Void in
-                prev.movieImage.frame.size = self.defaultSize
-                prev.movieLabel.frame.size = self.defltLabelSize
-            })
-            if let next = context.nextFocusedView as? MovieCell {
-                UIView.animateWithDuration(0.1, animations: { () -> Void in
-                    next.movieImage.frame.size = self.selectSize
-                    next.movieLabel.frame.size = self.slctLabelSize
-                })
-            }
-        }
-        
-    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "detailVC" {
-           
-            
             if let destinationVC = segue.destinationViewController as? DetailVC {
-                destinationVC.movieDetail = movies[(indexValue?.row)!]
-                }
+                destinationVC.movieDetail = movies[(indexValue.row)]
             }
-        
+        }
     }
 }
 
